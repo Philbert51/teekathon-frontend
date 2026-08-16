@@ -66,3 +66,6 @@ A generated program is judged solely by whether replaying its output through the
 - No handling for prompts exceeding the model's context window; large puzzles or long curriculum chains could hit this untested.
 - Mobile layout is untested; the added solver panels (.player, .solver_output) were built and verified on desktop only and may not respect the site's existing mobile breakpoints.
 - Solver buttons are not disabled while a run is in progress; starting a second run before the first completes is possible and untested, and could produce corrupted/incoherent output in the log.
+- No enforcement preventing a generated program from writing files or opening network connections beyond what 'stdlib only' in the prompt discourages, nothing below the prompt-instruction layer actually stops it.
+- No program-length ranking metric implemented; the anti-hardcoding requirement is enforced only by curriculum's multi-puzzle re-testing, not by comparing program length across attempts.
+- The harness implements curriculum mode but not a separate 'evaluate one program against several preselected puzzles in a single pass' mode without staging.
