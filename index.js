@@ -96,7 +96,7 @@ function stringSolutionChecker(message) {
 }
 $('#BFS').on('click', async (e) => {
 
-    const send = {}
+    const send = {};
     send['puzzle'] = current_level;
     send['algorithm'] = 'BFS';
     try {
@@ -137,7 +137,7 @@ $('#BFS').on('click', async (e) => {
 
 $('#DFS').on('click', async (e) => {
 
-    const send = {}
+    const send = {};
     send['puzzle'] = current_level;
     send['algorithm'] = 'DFS';
     try {
@@ -172,7 +172,7 @@ $('#DFS').on('click', async (e) => {
 
 $('#RGD').on('click', async (e) => {
 
-    const send = {}
+    const send = {};
     send['puzzle'] = current_level_string;
     send['algorithm'] = 'RGD';
     try {
@@ -194,7 +194,7 @@ $('#RGD').on('click', async (e) => {
         const stream = eventSource(data.id);
         stream.onmessage = (e) => { printOutput(e.data) ;
             stringSolutionChecker(e.data);}
-        stream.onerror = () => { stream.close() }
+        stream.onerror = () => { stream.close() };
 
     } catch (e) {
 
@@ -205,7 +205,7 @@ $('#RGD').on('click', async (e) => {
 });
 $('#LLM').on('click', async (e) => {
 
-    const send = {}
+    const send = {};
     send['curriculum'] = $('#curriculum').is(':checked');
     send['algorithm'] = 'LLM';
     try {
@@ -229,7 +229,7 @@ $('#LLM').on('click', async (e) => {
             printOutput(e.data);
             stringSolutionChecker(e.data);
         }
-        stream.onerror = () => { stream.close() }
+        stream.onerror = () => { stream.close() };
 
     } catch (e) {
 
@@ -926,6 +926,7 @@ function loadPuzzleGroup(group_name) {
 document.addEventListener('DOMContentLoaded', () => {
     $('.pushworld_puzzles .all_puzzles').click(() => {
         $('.player').addClass('hidden');
+        $('.puzzle_string').addClass('hidden');
         active_preview_panel.css("display", "inline");
         active_game = null;
         $('.pushworld_puzzles .puzzle_panel').css("display", "none");
@@ -1075,9 +1076,11 @@ function displayPuzzle(pushworld, preview_div, preview_panel, puzzle_string /*cu
         console.log(current_level);
         console.log(puzzle_string);
         $('.algorithm').removeClass('hidden');
+        $('.player').removeClass('hidden');
+        $('.puzzle_string').removeClass('hidden');
+        $('#puzzle_string').val(puzzle_string);
         //custom-added
         initGame(_pushworld);
-        $('.player').removeClass('hidden');
 
     })
 
