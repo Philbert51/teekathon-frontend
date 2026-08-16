@@ -1,7 +1,3 @@
-# PushWorld Puzzle Player
-
-This directory contains an HTML+Javascript application to browse and play
-PushWorld puzzles. To use, open `index.html` in a web browser.
 # Pre-Teekathon Submission
 
 Track 1: LLM Solver Program Synthesis.
@@ -38,6 +34,8 @@ The frontend is DeepMind's original PushWorld play page, extended with solver co
 It fetches puzzle data live from the `google-deepmind/pushworld` GitHub repository.
 
 The backend is a single Flask application. A POST to `/` accepts a puzzle and an algorithm choice, stores it under a generated run id, and returns that id. The frontend then opens a Server-Sent Events connection to `/receive/<run_id>`, which starts the chosen solver on a background thread and streams its progress one line per message until the run completes. This is what satisfies the real-time visualisation requirement: progress, not just a final answer, reaches the browser as it happens.
+
+The puzzle's raw text representation is displayed in a dedicated panel alongside the game.
 
 ## Classical Solver Integration
 
